@@ -5,7 +5,7 @@ set -e
 FLATPAK_URL="https://github.com/BiltekDesk/releases/releases/download/latest/biltekdesk.flatpak"
 FLATPAK_FILE="biltekdesk.flatpak"
 
-trap 'if [ -f "$FLATPAK_FILE" ]; then echo "Cleaning up..."; rm -f "$FLATPAK_FILE";
+trap 'if [ -f "$FLATPAK_FILE" ]; then echo "Cleaning up..."; rm -f "$FLATPAK_FILE"; fi' ERR
 
 echo "BiltekDesk installing..."
 
