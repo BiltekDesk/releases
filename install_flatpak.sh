@@ -30,11 +30,18 @@ flatpak install -y "$FLATPAK_FILE"
 echo "Starting desktop integration..."
 sudo ln -sf /var/lib/flatpak/exports/share/applications/tr.com.biltekbilgisayar.desk.desktop \
     /usr/share/applications/tr.com.biltekbilgisayar.desk.desktop
+sudo update-desktop-database 2>/dev/null || true
 
-update-desktop-database 2>/dev/null || true
-gtk-update-icon-cache -f /usr/share/icons/hicolor 2>/dev/null || true
+echo "Updating icons..."
+sudo gtk-update-icon-cache -f /usr/share/icons/hicolor 2>/dev/null || true
+sudo flatpak override --filesystem=/usr/share/icons tr.com.biltekbilgisayar.desk 2>/dev/null || true
+sudo gtk-update-icon-cache -f /usr/share/icons/hicolor
+sudo ln -sf /var/lib/flatpak/exports/share/icons/hicolor/256x256/apps/tr.com.biltekbilgisayar.desk.png /usr/share/icons/hicolor/256x256/apps/tr.com.biltekbilgisayar.desk.png
+sudo gtk-update-icon-cache -f /usr/share/icons/hicolor
 
-rm -f "$FLATPAK_FILE"
+echo "Cleaning temporary files..."
+
+sudo rm -f "$FLATPAK_FILE"
 
 echo ""
 echo "BiltekDesk installed successfully!"
