@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 FLATPAK_URL="https://github.com/BiltekDesk/releases/releases/download/latest/biltekdesk.flatpak"
 FLATPAK_FILE="biltekdesk.flatpak"
 
