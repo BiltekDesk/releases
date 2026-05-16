@@ -10,6 +10,12 @@ if ! command -v flatpak &> /dev/null; then
     sudo apt install -y flatpak
 fi
 
+echo "Adding Flathub repository..."
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+echo "Installing runtime..."
+sudo flatpak install -y flathub org.freedesktop.Platform//24.08 org.freedesktop.Sdk//24.08
+
 echo "App downloading..."
 curl -L -o "$FLATPAK_FILE" "$FLATPAK_URL"
 
@@ -18,10 +24,8 @@ if [ ! -f "$FLATPAK_FILE" ]; then
     exit 1
 fi
 
-sudo chmod +x "$FLATPAK_FILE"
-
 echo "App installing..."
-sudo flatpak install -y "$FLATPAK_FILE"
+flatpak install -y "$FLATPAK_FILE"
 
 echo "Starting desktop integration..."
 sudo ln -sf /var/lib/flatpak/exports/share/applications/tr.com.biltekbilgisayar.desk.desktop \
@@ -30,7 +34,7 @@ sudo ln -sf /var/lib/flatpak/exports/share/applications/tr.com.biltekbilgisayar.
 update-desktop-database 2>/dev/null || true
 gtk-update-icon-cache -f /usr/share/icons/hicolor 2>/dev/null || true
 
-sudo rm -f "$FLATPAK_FILE"
+rm -f "$FLATPAK_FILE"
 
 echo ""
 echo "BiltekDesk installed successfully!"
