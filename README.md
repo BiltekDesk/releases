@@ -1,7 +1,7 @@
 # biltekdesk-release
 Release downloads for biltekdesk
 
-version 1.4.91
+version 1.4.92
 
 **English**
 
