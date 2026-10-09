@@ -2,7 +2,7 @@
 
 set -e
 
-FLATPAK_URL="https://github.com/BiltekDesk/releases/releases/download/1.5.1/BiltekDesk-1.5.1.flatpak"
+FLATPAK_URL="https://github.com/BiltekDesk/releases/releases/download/1.5.2/BiltekDesk-1.5.2.flatpak"
 FLATPAK_FILE="biltekdesk.flatpak"
 
 trap 'if [ -f "$FLATPAK_FILE" ]; then echo "Cleaning up..."; rm -f "$FLATPAK_FILE"; fi' ERR

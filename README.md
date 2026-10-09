@@ -1,7 +1,7 @@
 # biltekdesk-release
 Release downloads for biltekdesk
 
-version 1.5.1
+version 1.5.2
 
 **English**
 
